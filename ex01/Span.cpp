@@ -6,7 +6,28 @@
 /*   By: rficht <rficht@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 16:43:38 by rficht            #+#    #+#             */
-/*   Updated: 2024/01/20 16:43:39 by rficht           ###   ########.fr       */
+/*   Updated: 2024/01/24 10:10:55 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "Span.hpp"
+
+Span::Span() : tab(new int[0]), lenght(0), cur_index(0)
+{}
+
+Span::Span(const unsigned int& lenght) : tab(new int[lenght]), lenght(lenght), cur_index(0)
+{}
+
+Span::~Span()
+{
+	delete[] tab;
+}
+
+
+	void Span::addNumber(const int& nbr)
+	{
+		if (this->lenght == this->cur_index)
+			throw (SpanFullException());
+		this->tab[cur_index] = nbr;
+		this->cur_index++;
+	}
