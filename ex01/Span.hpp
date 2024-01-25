@@ -6,7 +6,7 @@
 /*   By: rficht <rficht@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 16:43:41 by rficht            #+#    #+#             */
-/*   Updated: 2024/01/24 10:10:33 by rficht           ###   ########.fr       */
+/*   Updated: 2024/01/24 10:48:46 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 
 
 # include <iostream>
-//# include <string>
+# include <limits>
+# include <stdlib.h>
 
 
 class Span
@@ -35,11 +36,22 @@ public:
 	{
 		public:
 			virtual const char* what() const throw()
-			{	return ("Span is full");	}
+			{	return ("span is full");	}
 	};
 
 
+	class SpanTooFewElemException : public std::exception
+	{
+		public:
+			virtual const char* what() const throw()
+			{	return ("you need at least 2 elements to calculate span");	}
+	};
+	
+	
 	void addNumber(const int& nbr);
+	unsigned int shortestSpan();
+	unsigned int longestSpan();
+	
 };
 
 #endif
