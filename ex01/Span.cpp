@@ -6,7 +6,7 @@
 /*   By: rficht <rficht@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 16:43:38 by rficht            #+#    #+#             */
-/*   Updated: 2024/01/24 10:51:20 by rficht           ###   ########.fr       */
+/*   Updated: 2024/01/25 10:27:33 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,4 +57,39 @@ unsigned int Span::longestSpan()
 				distance = abs(tab[i] - tab[j]);
 				
 	return (distance);
+}
+
+Span::Span(const Span& rhs) : tab(new int[rhs.getLenght()]), lenght(rhs.getLenght()), cur_index(rhs.getIndex())
+{
+	for (size_t i = 0; i < cur_index; i++)
+		this->tab[i] = rhs.getTab()[i];
+	
+}
+
+
+const int* Span::getTab() const
+{	return (this->tab);	}
+
+
+const unsigned int& Span::getLenght() const
+{	return (this->lenght);	}
+
+const unsigned int& Span::getIndex() const
+{	return (this->cur_index);	}
+
+Span& Span::operator = (const Span& rhs)
+{
+	if (this != &rhs)
+	{
+		if (this->tab)
+			delete [] tab;
+		tab = new int[rhs.getLenght()];
+		lenght = rhs.getLenght();
+		cur_index = rhs.getIndex();
+
+		for (size_t i = 0; i < cur_index; i++)
+			this->tab[i] = rhs.getTab()[i];
+	}
+	
+	return (*this);
 }

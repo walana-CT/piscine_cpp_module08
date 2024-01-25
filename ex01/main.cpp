@@ -6,7 +6,7 @@
 /*   By: rficht <rficht@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 10:23:56 by rficht            #+#    #+#             */
-/*   Updated: 2024/01/24 11:14:10 by rficht           ###   ########.fr       */
+/*   Updated: 2024/01/25 10:28:03 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,6 @@ int main()
 	
 	std::cout << sp1.shortestSpan() << std::endl;
 	std::cout << sp1.longestSpan() << std::endl;
-
-	sp1.addNumber(9);
-	sp1.addNumber(9);
 	
 	Span sp2 = Span(5);
 
