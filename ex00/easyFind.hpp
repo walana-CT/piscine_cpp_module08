@@ -6,7 +6,7 @@
 /*   By: rficht <rficht@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 10:24:17 by rficht            #+#    #+#             */
-/*   Updated: 2024/01/20 16:37:40 by rficht           ###   ########.fr       */
+/*   Updated: 2024/01/26 09:59:52 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 /**
  * @param cont generic contenaire (non associative) filled with int
  * @param val the searched value
- * @return postion of the first found elem corres ponding val. return cont.end() if it couldn't be found
+ * @return postion of the first found elem corresponding val. return cont.end() if it couldn't be found
  *
 */
 template <typename T>

@@ -6,7 +6,7 @@
 /*   By: rficht <rficht@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 16:43:41 by rficht            #+#    #+#             */
-/*   Updated: 2024/01/25 10:26:44 by rficht           ###   ########.fr       */
+/*   Updated: 2024/01/30 08:33:49 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 
 class Span
 {
-private:
+protected:
 	int*				tab;
 	unsigned int		lenght;
 	unsigned int		cur_index;
@@ -50,17 +50,43 @@ public:
 	};
 	
 	void addNumber(const int& nbr);
+	void addNumbers(const int& nbr);
 	unsigned int shortestSpan();
 	unsigned int longestSpan();
 
 	const int * getTab() const;
 	const unsigned int& getLenght() const;
 	const unsigned int& getIndex() const;
+
+
+	class Iterator {
+		private:
+			int* current;
+
+		public:
+			Iterator(int* ptr) : current(ptr) {}
+
+			int& operator*() const;
+			
+		Iterator& operator++() {
+			++current;
+			return *this;
+		}
+
+		Iterator operator++(int) {
+			Iterator temp = *this;
+			++current;
+			return temp;
+		}
+
+			bool operator==(const Iterator& other) const;
+			
+			bool operator!=(const Iterator& other) const;
+		};
+
+	Iterator begin();
+	Iterator end();
 	
 };
-
-
-
-
 
 #endif

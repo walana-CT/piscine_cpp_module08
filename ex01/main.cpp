@@ -6,7 +6,7 @@
 /*   By: rficht <rficht@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 10:23:56 by rficht            #+#    #+#             */
-/*   Updated: 2024/01/25 10:28:03 by rficht           ###   ########.fr       */
+/*   Updated: 2024/01/26 10:11:17 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,15 @@ int main()
 	}
 	catch(const Span::SpanTooFewElemException& e)
 	{	std::cerr << e.what() << '\n';	}
+
+	Span realyBig = Span(10000);
+	for (size_t i = 0; i < 10000; i++)
+	{
+		realyBig.addNumber(i);
+	}
+	
+	std::cout << realyBig.longestSpan() << std::endl;
+	std::cout << realyBig.shortestSpan() << std::endl;	
 
 	return 0;
 }

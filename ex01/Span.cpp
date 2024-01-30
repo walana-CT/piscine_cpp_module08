@@ -6,7 +6,7 @@
 /*   By: rficht <rficht@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 16:43:38 by rficht            #+#    #+#             */
-/*   Updated: 2024/01/25 10:27:33 by rficht           ###   ########.fr       */
+/*   Updated: 2024/01/26 10:48:40 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,30 @@ Span& Span::operator = (const Span& rhs)
 		for (size_t i = 0; i < cur_index; i++)
 			this->tab[i] = rhs.getTab()[i];
 	}
-	
 	return (*this);
+}
+
+
+
+int& Span::Iterator::operator*() const {
+	return *current;
+}
+
+
+
+bool Span::Iterator::operator==(const Iterator& other) const {
+	return current == other.current;
+}
+
+bool Span::Iterator::operator!=(const Iterator& other) const {
+	return !(*this == other);
+}
+
+
+Span::Iterator begin() {
+	return Span::Iterator(tab);
+}
+
+Span::Iterator end() {
+	return Span::Iterator(tab + lenght);
 }
