@@ -6,7 +6,7 @@
 /*   By: rficht <rficht@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 16:43:41 by rficht            #+#    #+#             */
-/*   Updated: 2024/01/30 08:33:49 by rficht           ###   ########.fr       */
+/*   Updated: 2024/03/01 11:36:51 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 
 class Span
 {
-protected:
+private:
 	int*				tab;
 	unsigned int		lenght;
 	unsigned int		cur_index;
@@ -40,7 +40,6 @@ public:
 			virtual const char* what() const throw()
 			{	return ("span is full");	}
 	};
-
 
 	class SpanTooFewElemException : public std::exception
 	{
@@ -62,31 +61,33 @@ public:
 	class Iterator {
 		private:
 			int* current;
+			Span& classRef;
 
-		public:
-			Iterator(int* ptr) : current(ptr) {}
+		public:	
 
+			Iterator(int* ptr, Span& classRef);
+			Iterator(const Iterator& rhs);
+
+
+			int* getCurrent() const;
+			Span& getClassRef() const;
+
+			Span::Iterator & operator = (Span::Iterator const & rhs);			
 			int& operator*() const;
-			
-		Iterator& operator++() {
-			++current;
-			return *this;
-		}
-
-		Iterator operator++(int) {
-			Iterator temp = *this;
-			++current;
-			return temp;
-		}
-
+			Iterator& operator++();
+			Iterator operator++(int);
 			bool operator==(const Iterator& other) const;
-			
 			bool operator!=(const Iterator& other) const;
 		};
 
+	void fill (Span::Iterator first, Span::Iterator last, const int& val);
+	Span::Iterator& fill_n (Span::Iterator& first, unsigned int n, const int& val);
+	
 	Iterator begin();
 	Iterator end();
 	
 };
+
+std::ostream& operator<<(std::ostream& os, const Span::Iterator& rhs);
 
 #endif
