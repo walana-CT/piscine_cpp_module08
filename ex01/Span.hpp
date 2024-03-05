@@ -6,7 +6,7 @@
 /*   By: rficht <rficht@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 16:43:41 by rficht            #+#    #+#             */
-/*   Updated: 2024/03/05 16:36:21 by rficht           ###   ########.fr       */
+/*   Updated: 2024/03/05 17:37:22 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,9 @@ public:
 	const std::vector<int>& getVect() const;
 	const unsigned int& getLenght() const;
 
-	std::vector<int> begin();
-	std::vector<int> end();	
+	std::vector<int>::iterator begin();
+	std::vector<int>::iterator end();
+
 };
 
 std::ostream& operator<<(std::ostream& os, const Span& rhs);

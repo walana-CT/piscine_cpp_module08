@@ -6,7 +6,7 @@
 /*   By: rficht <rficht@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 10:23:56 by rficht            #+#    #+#             */
-/*   Updated: 2024/03/05 16:28:50 by rficht           ###   ########.fr       */
+/*   Updated: 2024/03/05 17:41:42 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,20 @@ int main()
 		Span sp1 = Span(5);
 
 
+
+	try
+	{
 		sp1.addNumber(6);
 		sp1.addNumber(3);
 		sp1.addNumber(17);
 		sp1.addNumber(9);
 		sp1.addNumber(11);
 		sp1.addNumber(42);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
 
 
 	return 0;
