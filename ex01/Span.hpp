@@ -6,7 +6,7 @@
 /*   By: rficht <rficht@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 16:43:41 by rficht            #+#    #+#             */
-/*   Updated: 2024/03/05 09:42:38 by rficht           ###   ########.fr       */
+/*   Updated: 2024/03/05 11:06:16 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ public:
 	};
 	
 	void addNumber(const int& nbr);
-	void addNumbers(const int& nbr);
 	unsigned int shortestSpan();
 	unsigned int longestSpan();
 
@@ -84,7 +83,7 @@ public:
 			unsigned int getPos();
 		};
 
-	void fill (Span::Iterator first, Span::Iterator last, const int& val);
+	void fill (Span::Iterator& first, Span::Iterator& last, const int& val);
 	Span::Iterator& fill_n (Span::Iterator& first, unsigned int n, const int& val);
 	
 	Iterator begin();

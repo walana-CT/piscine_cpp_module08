@@ -6,7 +6,7 @@
 /*   By: rficht <rficht@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 16:43:38 by rficht            #+#    #+#             */
-/*   Updated: 2024/03/05 09:43:51 by rficht           ###   ########.fr       */
+/*   Updated: 2024/03/05 11:01:02 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,24 +92,35 @@ Span& Span::operator = (const Span& rhs)
 }
 
 
-void Span::fill (Span::Iterator first, Span::Iterator last, const int& val)
+void Span::fill (Span::Iterator& first, Span::Iterator& last, const int& val)
 {
 	unsigned int pos1 = first.getPos();
 	unsigned int pos2 = last.getPos();
-	int reversed = (pos1 > pos2);
+	unsigned int n = 0;
+	int reversed;
 
+	if (pos1 < pos2)
+		reversed = 0;
+	else
+		reversed = 1;
 
 	if (pos1 == pos2)
 		return;
-	
-	while (first != last) {
+	if (first.getPos() == this->lenght)
+		first--;
+
+	while (first != last && n++ < 10)
+	{
 		*first = val;
 		if (!reversed)
-			first++;
+			++first;
 		else
-			first--;
-		
+			--first;
 	}
+
+	this->cur_index = (pos1 > pos2 ? pos1 : pos2);
+
+	
 }
 
 Span::Iterator& Span::fill_n (Span::Iterator& it, unsigned int n, const int& val)
@@ -117,19 +128,13 @@ Span::Iterator& Span::fill_n (Span::Iterator& it, unsigned int n, const int& val
 	
 	unsigned int start = it.getPos();
 	
-	std::cout << "fill_n called start : " << start << " n : " << n << " val : " << val << std::endl;
-	
 	if (lenght == cur_index)
 		return it;
 	
 	if (start + n > lenght)
 		n = lenght - start;
 
-	std::cout << "elem to add : " << n  << std::endl;
-
 	cur_index = start + n;
-
-	std::cout << "new index : " << cur_index  << std::endl;
 
 	while (n > 0) {
 		*it = val;
@@ -155,6 +160,6 @@ Span::Iterator Span::end() {
 
 std::ostream& operator<<(std::ostream& os, const Span& rhs)
 {
-	os << "Span: lenght: " << rhs.getLenght() << " address: " << rhs.getIndex() << std::endl;
+	os << "\tLenght: " << rhs.getLenght() << "\tCur pos: " << rhs.getIndex();
 	return os;
 }

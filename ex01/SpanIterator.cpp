@@ -6,7 +6,7 @@
 /*   By: rficht <rficht@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 09:18:06 by rficht            #+#    #+#             */
-/*   Updated: 2024/03/05 09:43:02 by rficht           ###   ########.fr       */
+/*   Updated: 2024/03/05 10:55:35 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,23 +91,8 @@ unsigned int Span::Iterator::getPos()
 {
 	unsigned int pos = 0;
 
-	std::cout << "get Pos called cur index: " << classRef.cur_index << std::endl;
-
-
-	while (pos < classRef.lenght && current != &classRef.tab[pos])
-	{
+	while (pos <= classRef.lenght && current != &classRef.tab[pos])
 		pos++;
-		std::cout << pos << std::endl;
-	}
 
-	if (pos == classRef.lenght)
-	{
-		std::cout << "Error: getPos didn't found any result" << std::endl;
-		return 0;
-	}
-	else
-	{
-		std::cout << "Success: found pos" << pos << std::endl;
-		return pos;		
-	}
+	return pos;
 }
