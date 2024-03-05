@@ -6,7 +6,7 @@
 /*   By: rficht <rficht@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 16:43:41 by rficht            #+#    #+#             */
-/*   Updated: 2024/03/05 15:52:29 by rficht           ###   ########.fr       */
+/*   Updated: 2024/03/05 16:36:21 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <vector>
 # include <stdlib.h>
 # include <algorithm>
+# include <stdlib.h>
 
 
 class Span
@@ -53,13 +54,11 @@ public:
 	unsigned int shortestSpan();
 	unsigned int longestSpan();
 
-	const int * getTab() const;
+	const std::vector<int>& getVect() const;
 	const unsigned int& getLenght() const;
-	const unsigned int& getIndex() const;
 
-
-	
-	
+	std::vector<int> begin();
+	std::vector<int> end();	
 };
 
 std::ostream& operator<<(std::ostream& os, const Span& rhs);
