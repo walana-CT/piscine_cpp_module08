@@ -6,7 +6,7 @@
 #    By: rficht <rficht@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/20 09:23:49 by rficht            #+#    #+#              #
-#    Updated: 2024/03/01 09:27:22 by rficht           ###   ########.fr        #
+#    Updated: 2024/03/05 15:32:22 by rficht           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,8 +47,7 @@ GFLAG = -g3
 #	Sources		#
 #---------------#
 FILES +=	main.cpp\
-			Span.cpp\
-			SpanIterator.cpp
+			Span.cpp
 			
 
 SOURCES = $(FILES)

@@ -6,7 +6,7 @@
 /*   By: rficht <rficht@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 16:43:41 by rficht            #+#    #+#             */
-/*   Updated: 2024/03/05 11:06:16 by rficht           ###   ########.fr       */
+/*   Updated: 2024/03/05 15:52:29 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,16 @@
 
 # include <iostream>
 # include <limits>
+# include <vector>
 # include <stdlib.h>
+# include <algorithm>
 
 
 class Span
 {
 private:
-	int*				tab;
-	unsigned int		lenght;
-	unsigned int		cur_index;
+	std::vector<int>	_vect;
+	unsigned int		_lenght;
 
 public:
 	Span();
@@ -57,42 +58,10 @@ public:
 	const unsigned int& getIndex() const;
 
 
-	class Iterator {
-		private:
-			int* current;
-			Span& classRef;
-
-		public:	
-
-			Iterator(int* ptr, Span& classRef);
-			Iterator(const Iterator& rhs);
-
-
-			int* getCurrent() const;
-			Span& getClassRef() const;
-
-			Span::Iterator & operator = (Span::Iterator const & rhs);			
-			int& operator*() const;
-			Iterator& operator++();
-			Iterator operator++(int);
-			Iterator& operator--();
-			Iterator operator--(int);
-			bool operator==(const Iterator& other) const;
-			bool operator!=(const Iterator& other) const;
-
-			unsigned int getPos();
-		};
-
-	void fill (Span::Iterator& first, Span::Iterator& last, const int& val);
-	Span::Iterator& fill_n (Span::Iterator& first, unsigned int n, const int& val);
 	
-	Iterator begin();
-	Iterator end();
-	Iterator current();
 	
 };
 
-std::ostream& operator<<(std::ostream& os, const Span::Iterator& rhs);
 std::ostream& operator<<(std::ostream& os, const Span& rhs);
 
 

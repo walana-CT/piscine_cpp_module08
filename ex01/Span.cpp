@@ -6,57 +6,49 @@
 /*   By: rficht <rficht@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 16:43:38 by rficht            #+#    #+#             */
-/*   Updated: 2024/03/05 11:01:02 by rficht           ###   ########.fr       */
+/*   Updated: 2024/03/05 15:57:35 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Span.hpp"
 
-Span::Span() : tab(new int[0]), lenght(0), cur_index(0)
+Span::Span() : _vect(), _lenght(0)
 {}
 
-Span::Span(const unsigned int& lenght) : tab(new int[lenght]), lenght(lenght), cur_index(0)
-{}
+Span::Span(const unsigned int& lenght) : _vect(), _lenght(lenght)
+{
+	this->_vect.reserve(_lenght);
+}
 
 Span::~Span()
-{
-	delete[] tab;
-}
+{}
 
 void Span::addNumber(const int& nbr)
 {
-	if (this->lenght == this->cur_index)
-		throw (SpanFullException());
-	this->tab[cur_index] = nbr;
-	this->cur_index++;
+	try
+	{
+		this->_vect.push_back(nbr);		
+	}
+	catch(const std::exception& e)
+	{
+		std::cout << "Span is full" << std::endl;
+	}
+
 }
 
 unsigned int Span::shortestSpan()
 {
-	unsigned int distance = std::numeric_limits<int>::max();
-	if (cur_index <= 1)
-		throw(Span::SpanTooFewElemException());
+	std::vector<int> vectCopy = std::sort(_vect.begin(), _vect.end());
 	
-	for (size_t i = 0; i < cur_index - 1; i++)
-		for (size_t j = i + 1; j < cur_index; j++)
-			if (abs(tab[i] - tab[j]) < distance)
-				distance = abs(tab[i] - tab[j]);
-				
-	return (distance);
+
+	return 4;
 }
 
 unsigned int Span::longestSpan()
 {
-	unsigned int distance = 0;
-	if (cur_index <= 1)
-		throw(Span::SpanTooFewElemException());
-	
-	for (size_t i = 0; i < cur_index - 1; i++)
-		for (size_t j = i + 1; j < cur_index; j++)
-			if (abs(tab[i] - tab[j]) > distance)
-				distance = abs(tab[i] - tab[j]);
+	std::vector<int> vectCopy = std::sort(_vect.begin(), _vect.end());
 				
-	return (distance);
+	return (std::abs(*_vect.begin(), *vectCopy.end()));
 }
 
 Span::Span(const Span& rhs) : tab(new int[rhs.getLenght()]), lenght(rhs.getLenght()), cur_index(rhs.getIndex())
@@ -67,13 +59,6 @@ Span::Span(const Span& rhs) : tab(new int[rhs.getLenght()]), lenght(rhs.getLengh
 
 const int* Span::getTab() const
 {	return (this->tab);	}
-
-
-const unsigned int& Span::getLenght() const
-{	return (this->lenght);	}
-
-const unsigned int& Span::getIndex() const
-{	return (this->cur_index);	}
 
 Span& Span::operator = (const Span& rhs)
 {
