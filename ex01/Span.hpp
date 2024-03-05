@@ -6,7 +6,7 @@
 /*   By: rficht <rficht@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 16:43:41 by rficht            #+#    #+#             */
-/*   Updated: 2024/03/01 11:36:51 by rficht           ###   ########.fr       */
+/*   Updated: 2024/03/05 09:42:38 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,12 @@ public:
 			int& operator*() const;
 			Iterator& operator++();
 			Iterator operator++(int);
+			Iterator& operator--();
+			Iterator operator--(int);
 			bool operator==(const Iterator& other) const;
 			bool operator!=(const Iterator& other) const;
+
+			unsigned int getPos();
 		};
 
 	void fill (Span::Iterator first, Span::Iterator last, const int& val);
@@ -85,9 +89,12 @@ public:
 	
 	Iterator begin();
 	Iterator end();
+	Iterator current();
 	
 };
 
 std::ostream& operator<<(std::ostream& os, const Span::Iterator& rhs);
+std::ostream& operator<<(std::ostream& os, const Span& rhs);
+
 
 #endif

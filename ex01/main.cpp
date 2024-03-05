@@ -6,7 +6,7 @@
 /*   By: rficht <rficht@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 10:23:56 by rficht            #+#    #+#             */
-/*   Updated: 2024/03/01 11:28:53 by rficht           ###   ########.fr       */
+/*   Updated: 2024/03/05 09:32:23 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int main()
 {
-	Span sp1 = Span(5);
+	/*Span sp1 = Span(5);
 	
 
 	try
@@ -71,7 +71,89 @@ int main()
 	
 	
 	std::cout << test.longestSpan() << std::endl;
-	std::cout << test.shortestSpan() << std::endl;
+	std::cout << test.shortestSpan() << std::endl;*/
+
+
+	std::cout << "testing iterartors" << std::endl;
+
+	std::cout << "testing fill_n" << std::endl;	
+
+	{
+		
+		Span sp = Span(5);
+		
+		Span::Iterator it = sp.begin();
+
+		std::cout << "before : " << sp << std::endl;
+
+		sp.fill_n(it, 5, 42);
+
+		std::cout << "after : " << sp << std::endl;
+	
+	}
+
+
+	{
+		
+		Span sp = Span(5);
+
+		sp.addNumber(6);
+		sp.addNumber(3);
+
+		Span::Iterator it = sp.current();
+
+		std::cout << "before : " << sp << std::endl;
+
+		sp.fill_n(it, 5, 42);
+
+		std::cout << "after : " << sp << std::endl;
+	
+	}
+
+
+	{
+		
+		Span sp = Span(5);
+
+		sp.addNumber(6);
+		sp.addNumber(3);
+
+		Span::Iterator it = sp.current();
+
+		std::cout << "before : " << sp << std::endl;
+
+		sp.fill_n(it, 2, 6);
+
+		std::cout << "after : " << sp << std::endl;
+	
+	}
+
+
+
+
+	{	
+		Span sp = Span(5);
+
+		sp.addNumber(6);
+		sp.addNumber(5);
+		sp.addNumber(4);
+		sp.addNumber(3);
+		sp.addNumber(2);
+		
+		Span::Iterator it = sp.current();
+
+		std::cout << "before : " << sp << std::endl;
+
+		sp.fill_n(it, 2, 6);
+
+		std::cout << "after : " << sp << std::endl;
+	}
+	
+
+	
+
+	
+
 
 	return 0;
 }
