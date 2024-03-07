@@ -6,7 +6,7 @@
 /*   By: rficht <rficht@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 16:43:38 by rficht            #+#    #+#             */
-/*   Updated: 2024/03/07 10:15:41 by rficht           ###   ########.fr       */
+/*   Updated: 2024/03/07 16:11:09 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ Span::~Span()
 
 void Span::addNumber(const int& nbr)
 {
-
 	if (_vect.size() == _vect.capacity())
 		throw(SpanFullException());
 	this->_vect.push_back(nbr);
@@ -88,7 +87,6 @@ std::vector<int>::iterator Span::begin() {
 std::vector<int>::iterator Span::end() {
 	return (this->_vect.end());
 }
-
 
 std::ostream& operator<<(std::ostream& os, const Span& rhs)
 {
