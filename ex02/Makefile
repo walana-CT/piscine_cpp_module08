@@ -6,7 +6,7 @@
 #    By: rficht <rficht@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/20 09:23:49 by rficht            #+#    #+#              #
-#    Updated: 2024/03/01 09:27:04 by rficht           ###   ########.fr        #
+#    Updated: 2024/03/07 16:08:34 by rficht           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ RESET	:= \033[0m
 SHELL = /bin/sh
 
 #--- Program name ---#
-NAME = exercice01
+NAME = exercice02
 
 #--- LIBS ---#
 #--- Includes ---#

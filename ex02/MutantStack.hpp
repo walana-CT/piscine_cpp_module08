@@ -6,7 +6,7 @@
 /*   By: rficht <rficht@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 08:36:46 by rficht            #+#    #+#             */
-/*   Updated: 2024/01/30 16:02:59 by rficht           ###   ########.fr       */
+/*   Updated: 2024/03/07 16:08:56 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,24 @@
 #include <vector>
 
 template <typename T, class Container = std::deque<T> >
-class MutantStack : public std::stack<T, Container >
+class MutantStack : public std::stack<T, Container>
 {
 public:
-	typedef typename std::deque<T>::iterator iterator;
-	typedef typename std::deque<T>::const_iterator const_iterator;
+
+	MutantStack(){};
+	~MutantStack(){};
+	MutantStack(const MutantStack& rhs): std::stack<T, Container>(rhs)
+	{}
+
+	MutantStack& operator = (const MutantStack& rhs)
+	{
+		if (this != &rhs)
+			static_cast<std::stack<T, Container>&>(*this) = rhs;
+		return(*this);
+	}
+
+	typedef typename Container::iterator iterator;
+	typedef typename Container::const_iterator const_iterator;
 
 	iterator begin() 
 	{	return this->c.begin();	}
@@ -36,13 +49,15 @@ public:
 
 	const_iterator end() const 
 	{	return this->c.end();	}
+
+	iterator operator--(){
+		return --(this->c);
+	}	
+
+    iterator operator--(int) {
+        iterator temp = this->c;
+        --(this->c);
+        return temp;
+    }
 };
-
-
-
-
-
-
-
-
 
