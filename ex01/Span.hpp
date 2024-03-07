@@ -6,7 +6,7 @@
 /*   By: rficht <rficht@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 16:43:41 by rficht            #+#    #+#             */
-/*   Updated: 2024/03/05 17:37:22 by rficht           ###   ########.fr       */
+/*   Updated: 2024/03/07 09:39:18 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ public:
 	Span();
 	~Span();
 	Span(const unsigned int& lenght);
+	Span(std::vector<int>::iterator first, std::vector<int>::iterator last);
 	Span(const Span& rhs);
 
 	Span& operator = (const Span& rhs);

@@ -6,7 +6,7 @@
 /*   By: rficht <rficht@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 16:43:38 by rficht            #+#    #+#             */
-/*   Updated: 2024/03/05 17:40:49 by rficht           ###   ########.fr       */
+/*   Updated: 2024/03/07 09:45:05 by rficht           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,9 @@ Span::Span(const unsigned int& lenght) : _vect(), _lenght(lenght)
 	this->_vect.reserve(_lenght);
 }
 
+Span::Span(std::vector<int>::iterator first, std::vector<int>::iterator last) : _vect(first, last), _lenght(std::distance(first, last))
+{}
+
 Span::~Span()
 {}
 
@@ -28,9 +31,7 @@ void Span::addNumber(const int& nbr)
 
 	if (_vect.size() == _vect.capacity())
 		throw(SpanFullException());
-	
-	this->_vect.push_back(nbr);		
-
+	this->_vect.push_back(nbr);
 }
 
 unsigned int Span::shortestSpan()
@@ -62,7 +63,7 @@ unsigned int Span::longestSpan()
 	if (_vect.size() < 2)
 		throw(SpanTooFewElemException());
 	std::sort(vectCopy.begin(), vectCopy.end());
-	return (abs(*vectCopy.begin() - *vectCopy.end()));
+	return (abs(vectCopy.front() - vectCopy.back()));
 }
 
 Span::Span(const Span& rhs) : _vect(rhs.getVect()), _lenght(rhs.getLenght())
